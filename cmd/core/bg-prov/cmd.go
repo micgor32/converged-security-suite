@@ -309,7 +309,11 @@ func (kmp *kmPrintCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewKM(file)
 	if err != nil {
 		return err
@@ -323,7 +327,11 @@ func (bpmp *bpmPrintCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewBPM(file)
 	if err != nil {
 		return err
@@ -337,7 +345,11 @@ func (acmp *acmPrintCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	acm, err := tools.ParseACM(file)
 	if err != nil {
 		return err
@@ -914,7 +926,11 @@ func (s *signKMCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewKM(file)
 	if err != nil {
 		return err
@@ -942,7 +958,11 @@ func (s *signBPMCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewBPM(file)
 	if err != nil {
 		return err
@@ -1040,8 +1060,11 @@ func (t *templateCmdv2) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
-
+	defer func() {
+		if err := f.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	if err := bootguard.WriteJSON(f); err != nil {
 		return err
 	}
@@ -1108,7 +1131,11 @@ func (t *templateCmdv1) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func() {
+		if err := f.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 
 	if err := bootguard.WriteJSON(f); err != nil {
 		return err
@@ -1134,7 +1161,11 @@ func (s *stitchingKMCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	sig, err := os.ReadFile(s.Signature)
 	if err != nil {
 		return err
@@ -1165,7 +1196,11 @@ func (s *stitchingBPMCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	sig, err := os.ReadFile(s.Signature)
 	if err != nil {
 		return err
@@ -1236,7 +1271,11 @@ func (s *stitchingCmd) Run(ctx *context) error {
 		if err != nil {
 			return err
 		}
-		defer file.Close()
+		defer func() {
+			if err := file.Close(); err != nil {
+				log.Warnf("failed to close the file: %v\n", err)
+			}
+		}()
 		size, err := file.WriteAt(me, int64(meRegionOffset))
 		if err != nil {
 			return err
@@ -1312,7 +1351,11 @@ func (v *verifyKMSigCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewKM(file)
 	if err != nil {
 		return err
@@ -1325,7 +1368,11 @@ func (b *verifyBPMSigCmd) Run(ctx *context) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	bg, err := bootguard.NewBPM(file)
 	if err != nil {
 		return err

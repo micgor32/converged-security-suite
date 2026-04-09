@@ -492,7 +492,7 @@ func (b *BootGuard) StitchBPM(pubKey crypto.PublicKey, signature []byte) ([]byte
 		}
 		b.VData.BGbpm.PMSE = *sig
 
-		if err := b.VData.BGbpm.PMSE.KeySignature.FillSignature(0, pubKey, signature, cbnt.AlgNull); err != nil {
+		if err := b.VData.BGbpm.PMSE.FillSignature(0, pubKey, signature, cbnt.AlgNull); err != nil {
 			return nil, err
 		}
 
@@ -506,7 +506,7 @@ func (b *BootGuard) StitchBPM(pubKey crypto.PublicKey, signature []byte) ([]byte
 			return nil, err
 		}
 		b.VData.CBNTbpm.PMSE = *sig
-		if err := b.VData.CBNTbpm.PMSE.KeySignature.FillSignature(0, pubKey, signature, cbnt.AlgNull); err != nil {
+		if err := b.VData.CBNTbpm.PMSE.FillSignature(0, pubKey, signature, cbnt.AlgNull); err != nil {
 			return nil, err
 		}
 
@@ -1161,7 +1161,11 @@ func (b *BootGuard) CreateIBBSegments(seElement uint8, flags uint16, imagepath s
 	if err != nil {
 		return err
 	}
-	defer image.Close()
+	defer func() {
+		if err := image.Close(); err != nil {
+			log.Warnf("failed to close the file: %v\n", err)
+		}
+	}()
 	stat, err := image.Stat()
 	if err != nil {
 		return err
@@ -1176,7 +1180,10 @@ func (b *BootGuard) CreateIBBSegments(seElement uint8, flags uint16, imagepath s
 	img, err := cbfs.NewImage(image)
 	if err != nil {
 		// To be sure the image file is closed before reading from it again
-		image.Close()
+		err := image.Close()
+		if err != nil {
+			return err
+		}
 		img, err := os.ReadFile(imagepath)
 		if err != nil {
 			return err
