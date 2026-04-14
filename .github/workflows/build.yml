@@ -167,7 +167,7 @@ jobs:
 
             - name: Read 1.0 config
               run: |
-                ./artifacts/bg-prov read-config config10.json
+                ./artifacts/bg-prov read-config config10.json ./firmware10.bin
                 ./artifacts/bg-prov bpm-export ./firmware10.bin bpm10.bin
                 ./artifacts/bg-prov km-export ./firmware10.bin km10.bin
                 sha256sum km10.bin > checksums
