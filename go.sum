@@ -72,8 +72,8 @@ github.com/Azure/azure-sdk-for-go v30.1.0+incompatible/go.mod h1:9XXNKU+eRnpl9mo
 github.com/Azure/azure-service-bus-go v0.9.1/go.mod h1:yzBx6/BUGfjfeqbRZny9AQIbIe3AcV9WZbAdpkoXOa0=
 github.com/Azure/azure-storage-blob-go v0.8.0/go.mod h1:lPI3aLPpuLTeUwh1sViKXFxwl2B6teiRqI0deQUvsw0=
 github.com/Azure/go-autorest v12.0.0+incompatible/go.mod h1:r+4oMnoxhatjLLJ6zxSWATqVooLgysK6ZNox3g/xq24=
-github.com/BlindspotSoftware/fiano v0.0.0-20260407150208-26d4f36f41e0 h1:mjJKyfsNdFpfx2XBLb4Bzs++N5xdHjiRLrnHNw3ehjc=
-github.com/BlindspotSoftware/fiano v0.0.0-20260407150208-26d4f36f41e0/go.mod h1:aB4kacPpV1iKDXueYEpSh4dQ5uRenDrUNnPBIaf2hvU=
+github.com/BlindspotSoftware/fiano v0.0.0-20260414220359-36ac58203225 h1:J4TCVkiN9T8DV6DFHzp+fB3rLnjF3k9ncKzyQ6ql+5Q=
+github.com/BlindspotSoftware/fiano v0.0.0-20260414220359-36ac58203225/go.mod h1:aB4kacPpV1iKDXueYEpSh4dQ5uRenDrUNnPBIaf2hvU=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/DataDog/gostackparse v0.6.0 h1:egCGQviIabPwsyoWpGvIBGrEnNWez35aEO7OJ1vBI4o=

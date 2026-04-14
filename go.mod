@@ -62,7 +62,7 @@ require (
 
 replace (
 	github.com/intel-go/cpuid => github.com/u-root/cpuid v0.0.0-20250320140348-cc5fe81d966c
-	github.com/linuxboot/fiano => /home/micgor32/blindspot/fiano
+	github.com/linuxboot/fiano => github.com/BlindspotSoftware/fiano v0.0.0-20260414220359-36ac58203225
 	github.com/lyft/protoc-gen-validate => github.com/envoyproxy/protoc-gen-validate v1.3.0
 	github.com/prometheus/procfs => github.com/micgor32/procfs v0.0.0-20260302150133-9cbb6f93e41e
 )
