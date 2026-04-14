@@ -207,4 +207,5 @@ jobs:
                 ./artifacts/bg-prov bpm-gen-v-1 --config=config10.json bpm10.bin ./firmware10.bin
                 ./artifacts/bg-prov km-gen-v-1 --config=config10.json km10.bin km_pub10.pem
                 sha256sum bpm10.bin
+                sha256sum km10.bin
                 sha256sum -c checksums
