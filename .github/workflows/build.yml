@@ -203,5 +203,5 @@ jobs:
             - name: Generate from config
               run: |
                 ./artifacts/bg-prov bpm-gen-v-1 --config=config10.json bpm10.bin ./firmware10.bin
-                ./bin/bg-prov km-gen-v-1 --config=config10.json km10.bin km_pub10.pem
+                ./artifacts/bg-prov km-gen-v-1 --config=config10.json km10.bin km_pub10.pem
                 sha256sum -C checksums
