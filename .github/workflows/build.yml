@@ -187,8 +187,7 @@ jobs:
 
             - name: Extract pubkey from KM 1.0
               run: |
-                KEY_DATA_B64=$(jq -r '."v1-keymanifest".kmKeySignature.ksKey.keyData' config10.json)
-                echo "$KEY_DATA_B64" | base64 -d > /tmp/keydata.bin
+                jq -r '."v1-keymanifest".kmKeySignature.ksKey.keyData' config10.json | base64 -d > /tmp/keydata.bin
                 EXPONENT_HEX=$(dd if=/tmp/keydata.bin bs=1 count=4 2>/dev/null | od -An -tx1 | tr -d ' \n' | fold -w2 | tac | tr -d '\n')
                 MODULUS_HEX=$(dd if=/tmp/keydata.bin bs=1 skip=4 2>/dev/null | od -An -tx1 | tr -d ' \n' | fold -w2 | tac | tr -d '\n')
                 cat > /tmp/rsa_key.asn1 << EOF
@@ -219,8 +218,7 @@ jobs:
                 rm km20.bin bpm20.bin
             - name: Extract pubkey from KM 2.0
               run: |
-                KEY_DATA_B64=$(jq -r '."v2-keymanifest".kmKeySignature.ksKey.keyData' config20.json)
-                echo "$KEY_DATA_B64" | base64 -d > /tmp/keydata.bin
+                jq -r '."v2-keymanifest".kmKeySignature.ksKey.keyData' config20.json | base64 -d > /tmp/keydata.bin
                 EXPONENT_HEX=$(dd if=/tmp/keydata.bin bs=1 count=4 2>/dev/null | od -An -tx1 | tr -d ' \n' | fold -w2 | tac | tr -d '\n')
                 MODULUS_HEX=$(dd if=/tmp/keydata.bin bs=1 skip=4 2>/dev/null | od -An -tx1 | tr -d ' \n' | fold -w2 | tac | tr -d '\n')
                 cat > /tmp/rsa_key.asn1 << EOF
