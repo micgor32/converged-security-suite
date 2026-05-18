@@ -184,6 +184,7 @@ jobs:
                 sha256sum km10.bin
                 sha256sum bpm10.bin
                 rm km10.bin bpm10.bin
+
             - name: Extract pubkey from KM 1.0
               run: |
                 KEY_DATA_B64=$(jq -r '."v1-keymanifest".kmKeySignature.ksKey.keyData' config10.json)
