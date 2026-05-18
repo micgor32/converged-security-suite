@@ -152,7 +152,7 @@ jobs:
                 path: |
                   firmware10.bin
                   firmware20.bin
-              key: firmware-imgs
+                key: firmware-imgs
 
             - name: Download FW with BtG 1.0
               if: steps.cache-firmware.outputs.cache-hit != 'true'
